@@ -1,27 +1,26 @@
 package entities;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        String filename = "./src/resources/LabyrinthFile.txt";
-        try {
-            FileReader fileReader = new FileReader(filename);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line = bufferedReader.readLine();
-            while (line != null) {
-                System.out.println(line);
-                line = bufferedReader.readLine();
-            }
-            bufferedReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Arquivo \"" + filename + "\" não existe. ");
-        } catch (IOException e) {
-            System.out.println("Erro na leitura de " + filename + ". ");
-        }
+    	try (Scanner scan = new Scanner(System.in)) {
+			System.out.println("Qual o nome do arquvo?");
+			String filename = scan.nextLine();
+			Labirinto labirinto = new Labirinto();
+//			labirinto.carregaLabirinto(filename); LabyrinthFile.txt
+			
+			
+			System.out.println();
+			for (int x = 0; x<8; x++) {
+			for (int y = 0; y<20; y++) {
+				System.out.print(labirinto.carregaLabirinto(filename)[x][y]);
+			}
+			System.out.println("");
+		}
+			
+
+		}
     }
 }
