@@ -4,10 +4,29 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Labirinto {
 
 	public static char[][] labirinto;
+
+	public boolean labirinto(String fileName) throws IllegalArgumentException{
+		if(Objects.nonNull(fileName)) throw new IllegalArgumentException();
+		return labirintoR(carregaLabirinto(fileName));
+	}
+
+	private boolean labirintoR(char[][] fileCharMatrix){		
+		for (int i = 0; i<fileCharMatrix.length; i++) {
+			for (int j = 0; j<fileCharMatrix[0].length; j++) {
+				if(fileCharMatrix[i][j] == ' ') {
+					
+				}
+			}
+		}
+		return false;
+//		if(N <= 1) return 1;
+//		return N * labirintoR(N-1);
+	}
 
 	public static char[][] carregaLabirinto(String fileName) {    	
 		String filename = "./src/resources/" + fileName;
@@ -18,6 +37,7 @@ public class Labirinto {
 			String line = bufferedReader.readLine();
 			int count = 0;
 			int i = Integer.parseInt(line.trim());
+			
 			line = bufferedReader.readLine();
 			int j = Integer.parseInt(line.trim());
 
@@ -30,12 +50,12 @@ public class Labirinto {
 				line = bufferedReader.readLine();
 				count++;
 			}
-//			for (int x = 0; x<i; x++) {
-//				for (int y = 0; y<j; y++) {
-//					System.out.print(labirinto[x][y]);
-//				}
-//				System.out.println("");
-//			}
+			//			for (int x = 0; x<i; x++) {
+			//				for (int y = 0; y<j; y++) {
+			//					System.out.print(labirinto[x][y]);
+			//				}
+			//				System.out.println("");
+			//			}
 
 			bufferedReader.close();
 		} catch (FileNotFoundException e) {
