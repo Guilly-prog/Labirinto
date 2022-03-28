@@ -15,7 +15,8 @@ public class Labirinto {
 	private static char[][] labirinto;
 
 	public static void posicaoTestada(int linha, int coluna) {
-		labirinto[linha][coluna] = TESTADO;
+		if(labirinto[linha][coluna] != 'D')
+			labirinto[linha][coluna] = TESTADO;
 	}
 
 	/**
@@ -27,7 +28,7 @@ public class Labirinto {
 	public boolean posicaoValida(int linha, int coluna) {		
 		if(linha>=0 && linha<labirinto.length && 
 				coluna>=0 && coluna<labirinto[linha].length) {
-			if(labirinto[linha][coluna] == LIVRE) {
+			if(labirinto[linha][coluna] == LIVRE || labirinto[linha][coluna] == 'D') {
 				return true;
 			}
 		}
@@ -43,7 +44,7 @@ public class Labirinto {
 	 */
 	public boolean labirinto(String fileName) throws IllegalArgumentException{
 		if(Objects.isNull(fileName) || fileName.isEmpty()) throw new IllegalArgumentException();
-		
+
 		labirinto = carregaLabirinto(fileName);
 		if(Objects.nonNull(labirinto)) {
 			return labirintoR(labirinto, 0, 0);			
@@ -60,7 +61,7 @@ public class Labirinto {
 		boolean done = false;
 		if(posicaoValida(linha,coluna)) {
 			posicaoTestada(linha,coluna);
-			
+
 			if (labirinto[linha][coluna] == 'D') {
 				done = true;
 			} else {
@@ -77,7 +78,7 @@ public class Labirinto {
 					done = labirintoR(fileCharMatrix, linha, coluna+1);//casa da direita
 				}
 			}
-		
+
 		}
 		return done;
 	}
@@ -144,8 +145,8 @@ public class Labirinto {
 	public static char getTestado() {
 		return TESTADO;
 	}
-	
-	
+
+
 
 	@Override
 	public String toString() {
@@ -159,7 +160,7 @@ public class Labirinto {
 		return resultado;
 	}
 
-	
+
 
 
 }
