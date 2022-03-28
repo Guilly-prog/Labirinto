@@ -11,19 +11,9 @@ public class Main {
 			Labirinto labirinto = new Labirinto();
 			//			labirinto.carregaLabirinto(filename); LabyrinthFile.txt
 
-
-			labirinto.labirinto = new char[8][20];
-			System.out.println("só lengh"+labirinto.labirinto.length);
-			System.out.println("só []lengh"+labirinto.labirinto[0].length);
-			System.out.println("só [][]"+labirinto.labirinto[0][0]);
+			labirinto.labirinto(filename);
+			System.out.println(labirinto.toString());
 			
-//			System.out.println();
-//			for (int x = 0; x<8; x++) {
-//				for (int y = 0; y<20; y++) {
-//					System.out.print(labirinto.carregaLabirinto(filename)[x][y]);
-//				}
-//				System.out.println("");
-//			}
 
 
 		}
